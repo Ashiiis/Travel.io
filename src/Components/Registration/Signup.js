@@ -16,6 +16,9 @@ function Signup() {
   const [country, setCountry] = useState('');
   const [pinCode, setPinCode] = useState('');
 
+
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertType, setAlertType] = useState(''); 
   const handleProfilePicChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -53,26 +56,34 @@ function Signup() {
     if (backgroundPic) formData.append('backgroundPic', backgroundPic);
 
     try {
-      const response = await fetch('http://localhost:8000/api/register/', {
+      const response = await fetch('http://localhost:8000/services/register/', {
         method: 'POST',
         body: formData,
       });
 
       if (response.ok) {
-        alert('User registered successfully');
-        // You can redirect or reset the form here
+        setAlertMessage('User registered successfully');
+        setAlertType('success');
       } else {
         const data = await response.json();
-        alert(`Error: ${data.detail || 'Something went wrong'}`);
+        setAlertMessage(data.detail || 'Something went wrong');
+        setAlertType('error');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('Error registering user');
+      setAlertMessage('Error registering user');
+      setAlertType('error');
     }
   };
 
   return (
+    
     <div className="signup-container">
+      {alertMessage && (
+          <div className={`alert ${alertType === 'success' ? 'alert-success' : 'alert-error'}`}>
+      {alertMessage}
+  </div>
+)}
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="background-pic-container">
           <div className="background-preview" style={{ backgroundImage: `url(${backgroundPic ? URL.createObjectURL(backgroundPic) : ''})` }}>
@@ -211,6 +222,7 @@ function Signup() {
         <button type="submit" className="signup-button">Sign Up</button>
         <Link to="/login" className="signin">Sign In</Link>
       </form>
+      
     </div>
   );
 }

@@ -12,6 +12,7 @@ import Slider from './Components/home/Slider';
 import Contect from './Components/Contectus/Contect';
 // import Slider from 'react-slick';
 // import App from './App'
+import DataProcessingComponent from './Components/temp';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Signup from './Components/Registration/Signup';
 import Login from './Components/Registration/Login';
@@ -73,6 +74,7 @@ function App() {
                 ))}
               </Slider>
               <Plantrip />
+              <DataProcessingComponent/>
               <Footer />
             </>
           } />
