@@ -51,15 +51,15 @@ function App() {
                 <h1><b>Go on an award-winning adventure</b></h1>
                 <h2>2024's Best of The Best Places To Go</h2>
               </div>
-              <Slider handlePrevClick={handlePrevClick} handleNextClick={handleNextClick}>
-                {displayedCards.map((card, index) => (
-                  <First
-                    key={index}
-                    image={card.image}
-                    title={card.title}
-                  />
-                ))}
-              </Slider>
+              // <Slider handlePrevClick={handlePrevClick} handleNextClick={handleNextClick}>
+              //   {displayedCards.map((card, index) => (
+              //     <First
+              //       key={index}
+              //       image={card.image}
+              //       title={card.title}
+              //     />
+              //   ))}
+              // </Slider>
               <div className="second">
                 <h1><b>Some Thrilling Outdoor Adventure</b></h1>
                 <h2>Climb, Fall, Ride, Swim (don't stop)</h2>
